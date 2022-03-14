@@ -3,7 +3,7 @@ import './Board.css';
 import { useRef, useState } from "react";
 
 
-function Board1(){
+function Board(){
 
     const [squares, setSquares] = useState(Array(9).fill(''));
     const [player, setPlayer] = useState(true);
@@ -27,7 +27,7 @@ function Board1(){
             setPlayer(!player)
         }
         if(!winner){
-            
+
             setPlayer(prev => !prev)
         }
         setSquares(Array(9).fill(''));
@@ -45,12 +45,7 @@ function Board1(){
         if(squares.every(el=> el !== '') ){
             playerStatusRef.current = `It's draw`;
         }
-        // if(!winner){
-        //     playerStatusRef.current=  `Player ${player ? 'X' : 'O'}`
-        // }
         
-
-
     function checkWinner(squares){
         const winCoditions = [
             [0,1,2],
@@ -67,7 +62,7 @@ function Board1(){
             let [firstIdx, secondIdx, thirdIdx] = winCoditions[i];
             if (squares[firstIdx] && squares[firstIdx] === squares[secondIdx] && squares[firstIdx] === squares[thirdIdx]) {
 
-                return squares[firstIdx]
+                return squares[firstIdx];
 
             }
         }
@@ -75,28 +70,28 @@ function Board1(){
 
     return(
         <>
-        <h1>TIC TAC TOE</h1>
-        <div className="container">
-            <div className="squares">
-            
-                {
-                    squares.map((square, i)=>{
-   
-                         return(        
+            <h1>TIC TAC TOE</h1>
+            <div className="container">
+                <div className="squares">
+                
+                    {
+                        squares.map((square, i)=>{
     
-                            <Square key={i}  handleSquareClick={()=>handleSquareClick(i)} value={square}/>
-                           
-                        )
-                    })
-                }
-             
-            </div>
+                            return(        
+        
+                                <Square key={i}  handleSquareClick={()=>handleSquareClick(i)} value={square}/>
+                            
+                            )
+                        })
+                    }
+                
+                </div>
 
-         </div>
-         <h2>{playerStatusRef.current}</h2>
-                <button className="restart" onClick={handleRestartBtn}>restart</button>
+            </div>
+            <h2>{playerStatusRef.current}</h2>
+            <button className="restart" onClick={handleRestartBtn}>restart</button>
         </>
     )
 }
 
-export default Board1;
+export default Board;
