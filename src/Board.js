@@ -42,7 +42,7 @@ function Board(){
             playerStatusRef.current=  `Player ${player ? 'X' : 'O'}`
         }
 
-        if(squares.every(el=> el !== '') ){
+        if(squares.every(el=> el !== '' && !winner) ){
             playerStatusRef.current = `It's draw`;
         }
         
