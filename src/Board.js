@@ -26,8 +26,13 @@ function Board1(){
         }else{
             setPlayer(!player)
         }
+        if(!winner){
+            
+            setPlayer(prev => !prev)
+        }
         setSquares(Array(9).fill(''));
     }
+    
     const winner = checkWinner(squares);
 
         if(winner){
@@ -38,8 +43,12 @@ function Board1(){
         }
 
         if(squares.every(el=> el !== '') ){
-            playerStatusRef.current = `It's draw`
+            playerStatusRef.current = `It's draw`;
         }
+        // if(!winner){
+        //     playerStatusRef.current=  `Player ${player ? 'X' : 'O'}`
+        // }
+        
 
 
     function checkWinner(squares){
