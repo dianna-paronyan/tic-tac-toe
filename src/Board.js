@@ -1,6 +1,6 @@
 import Square from "./Square";
-import './Board.css';
 import { useRef, useState } from "react";
+import './Board.css';
 
 
 function Board(){
